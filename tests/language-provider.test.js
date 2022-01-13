@@ -17,6 +17,7 @@ test("EfficientNetLanguageProvider - check english translation file", (done) => 
     })
     .catch((error) => done(error));
 });
+
 test("EfficientNetLanguageProvider - check chinese translation file", (done) => {
   const chineseProvider = new EfficientNetLanguageProvider(
     EfficientNetLableLanguage.CHINESE
@@ -31,6 +32,7 @@ test("EfficientNetLanguageProvider - check chinese translation file", (done) => 
     })
     .catch((error) => done(error));
 });
+
 test("EfficientNetLanguageProvider - check spanish translation file", (done) => {
   const spanishProvider = new EfficientNetLanguageProvider(
     EfficientNetLableLanguage.SPANISH
@@ -41,6 +43,22 @@ test("EfficientNetLanguageProvider - check spanish translation file", (done) => 
       const result = spanishProvider.get(0);
       expect(result).toBeDefined();
       expect(result).toEqual("tenca, Tinca tinca");
+      done();
+    })
+    .catch((error) => done(error));
+});
+
+test("EfficientNetLanguageProvider - check arabic translation file", (done) => {
+  const arabicProvider = new EfficientNetLanguageProvider(
+    EfficientNetLableLanguage.ARABIC
+  );
+  
+  arabicProvider
+    .load()
+    .then(() => {
+      const result = arabicProvider.get(0);
+      expect(result).toBeDefined();
+      expect(result).toEqual("تنش ، تينكا تينكا");
       done();
     })
     .catch((error) => done(error));
